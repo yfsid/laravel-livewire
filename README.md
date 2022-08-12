@@ -59,6 +59,35 @@
     php artisan livewire:make Post/Single
     ```
 
+-   Open file blade post/index
+    ```php
+    <div>
+        @forelse($posts as $post)
+            <livewire:post.single :post="$post" :key="$post->id" />
+        @empty
+            No Data
+        @endforelse
+    </div>
+    ```
+-   Open file blade post/single
+
+    ```php
+    <div class="flex mb-3">
+        <img src="{{ $post->user->avatar() }}" alt="avatar" class="mr-3 rounded-full w-12">
+
+        <div class="">
+            <h5 class="mt-0 text-slate-900 text-md">{{ $post->user->name }}</h5>
+            <span class="text-slate-500 text-sm">{{ $post->content }}</span>
+        </div>
+    </div>
+
+    ```
+
+-   Open file blade dashboard, insert livewire post/index
+    ```php
+    <livewire:post.index />
+    ```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
