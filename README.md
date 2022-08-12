@@ -3,6 +3,23 @@
 ## About Laravel
 
 -   Install Laravel v9.24.0 in PHP v8.1.9
+-   Install Breeze
+
+```php
+composer require laravel/breeze --dev
+
+php artisan breeze:install
+
+php artisan migrate
+npm install
+npm run dev
+```
+
+-   Install Livewire
+
+```php
+composer require livewire/livewire
+```
 
 ## License
 
