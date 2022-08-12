@@ -20,6 +20,45 @@
     composer require livewire/livewire
     ```
 
+## Livewire Post Index
+
+-   Make model Post
+    ```php
+    php artisan make:model Post -m
+    ```
+-   Open Post model
+
+    ```php
+
+    protected $fillable = [
+        'title',
+        'content'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    ```
+
+-   Open User model
+
+    ```php
+
+    public function avatar()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mp';
+    }
+    ```
+
+-   Make livewire Post/Index and Post/Single
+
+    ```php
+    php artisan livewire:make Post/Index
+
+    php artisan livewire:make Post/Single
+    ```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
