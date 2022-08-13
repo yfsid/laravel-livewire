@@ -12,6 +12,11 @@ class Create extends Component
 
     public function store()
     {
+        $this->validate([
+            'title' => ['required'],
+            'content' => ['required'],
+        ]);
+
         $post = auth()->user()->posts()->create([
             'title' => $this->title,
             'content' => $this->content

@@ -152,6 +152,44 @@
     }
     ```
 
+## Validation
+
+add validate to function store in class post create
+
+```php
+...
+
+public function store()
+{
+    $this->validate([
+        'title' => ['required'],
+        'content' => ['required'],
+    ]);
+
+    ...
+}
+```
+
+add `@error('title')` in file blade post create
+
+```php
+@error('title')
+    <span class="mt-4 text-red-500">
+        {{ $message }}
+    </span>
+@enderror
+```
+
+add `@error('content')` in file blade post create
+
+```php
+@error('content')
+    <span class="mt-4 text-red-500">
+        {{ $message }}
+    </span>
+@enderror
+```
+
 ## Firing and Listening for Events
 
 change method store in class post create
