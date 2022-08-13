@@ -164,13 +164,13 @@ change method store in class post create
     ```
 -   after
 
-        ```php
-        $post = auth()->user()->posts()->create([
-            ...
-        ]);
+    ```php
+    $post = auth()->user()->posts()->create([
+        ...
+    ]);
 
-        $this->emit('postStore', $post->id);
-        ```
+    $this->emit('postStore', $post->id);
+    ```
 
 add new method listener in class post index
 
