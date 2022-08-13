@@ -152,6 +152,26 @@
     }
     ```
 
+## Timezone
+
+Set timezone,
+change file config app
+
+-   before
+    ```php
+    'timezone' => 'UTC',
+    ```
+-   after
+    ```php
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    ```
+
+add new key in .env file
+
+    ```php
+    APP_TIMEZONE='Asia/Jakarta'
+    ```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
