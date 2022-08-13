@@ -12,10 +12,12 @@ class Create extends Component
 
     public function store()
     {
-        auth()->user()->posts()->create([
+        $post = auth()->user()->posts()->create([
             'title' => $this->title,
             'content' => $this->content
         ]);
+
+        $this->emit('postStore', $post->id);
 
         $this->title = '';
         $this->content = '';

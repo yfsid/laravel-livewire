@@ -7,6 +7,15 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    protected $listeners = [
+        'postStore'
+    ];
+
+    public function postStore()
+    {
+        //
+    }
+
     public function render()
     {
         return view('livewire.post.index', [

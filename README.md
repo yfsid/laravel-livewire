@@ -152,6 +152,41 @@
     }
     ```
 
+## Firing and Listening for Events
+
+change method store in class post create
+
+-   before
+    ```php
+    auth()->user()->posts()->create([
+        ...
+    ]);
+    ```
+-   after
+
+        ```php
+        $post = auth()->user()->posts()->create([
+            ...
+        ]);
+
+        $this->emit('postStore', $post->id);
+        ```
+
+add new method listener in class post index
+
+```php
+...
+protected $listeners = [
+    'postStore'
+];
+
+public function postStore()
+{
+    //
+}
+...
+```
+
 ## Timezone
 
 Set timezone,
