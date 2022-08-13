@@ -187,6 +187,38 @@ public function postStore()
 ...
 ```
 
+## Use Pagination
+
+Open class post index, add pagination
+
+```php
+...
+use Livewire\WithPagination;
+
+class Index extends Component
+{
+    use WithPagination;
+
+    ...
+
+    public function render()
+    {
+        return view('livewire.post.index', [
+            'posts' => Post::latest()->paginate(3)
+        ]);
+    }
+}
+
+```
+
+add pagination links in file blade post index, after forelse block
+
+```php
+...
+{{ $posts->links() }}
+...
+```
+
 ## Timezone
 
 Set timezone,
