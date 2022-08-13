@@ -168,9 +168,9 @@ change file config app
 
 add new key in .env file
 
-    ```php
-    APP_TIMEZONE='Asia/Jakarta'
-    ```
+```php
+APP_TIMEZONE='Asia/Jakarta'
+```
 
 ## License
 
