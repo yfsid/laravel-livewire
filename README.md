@@ -157,8 +157,6 @@
 add validate to function store in class post create
 
 ```php
-...
-
 public function store()
 {
     $this->validate([
@@ -208,14 +206,11 @@ public function postStore()
 add session flash message in file blade post index
 
 ```php
-...
 @if (session()->has('message'))
     <div class="px-4 py-2 text-green-900 bg-green-200 rounded-md">
         {{ session('message') }}
     </div>
 @endif
-
-...
 ```
 
 ## Firing and Listening for Events
@@ -241,7 +236,6 @@ change method store in class post create
 add new method listener in class post index
 
 ```php
-...
 protected $listeners = [
     'postStore'
 ];
@@ -250,7 +244,6 @@ public function postStore()
 {
     //
 }
-...
 ```
 
 ## Use Pagination
@@ -258,7 +251,6 @@ public function postStore()
 Open class post index, add pagination
 
 ```php
-...
 use Livewire\WithPagination;
 
 class Index extends Component
@@ -274,15 +266,12 @@ class Index extends Component
         ]);
     }
 }
-
 ```
 
 add pagination links in file blade post index, after forelse block
 
 ```php
-...
 {{ $posts->links() }}
-...
 ```
 
 ## Timezone
