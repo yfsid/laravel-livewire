@@ -190,6 +190,34 @@ add `@error('content')` in file blade post create
 @enderror
 ```
 
+## Session flash with message
+
+add session message in function PostStore in class post index
+
+```php
+...
+
+public function postStore()
+{
+    session()->flash('message', 'Your post was added!.');
+}
+
+...
+```
+
+add session flash message in file blade post index
+
+```php
+...
+@if (session()->has('message'))
+    <div class="px-4 py-2 text-green-900 bg-green-200 rounded-md">
+        {{ session('message') }}
+    </div>
+@endif
+
+...
+```
+
 ## Firing and Listening for Events
 
 change method store in class post create

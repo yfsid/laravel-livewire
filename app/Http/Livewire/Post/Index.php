@@ -16,7 +16,7 @@ class Index extends Component
 
     public function postStore()
     {
-        //
+        session()->flash('message', 'Your post was added!.');
     }
 
     public function render()
