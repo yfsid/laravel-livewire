@@ -73,11 +73,11 @@
 
     ```php
     <div class="flex mb-3">
-        <img src="{{ $post->user->avatar() }}" alt="avatar" class="mr-3 rounded-full w-12">
+        <img src="{{ $post->user->avatar() }}" alt="avatar" class="w-12 mr-3 rounded-full">
 
         <div class="">
             <h5 class="mt-0 text-slate-900 text-md">{{ $post->user->name }}</h5>
-            <span class="text-slate-500 text-sm">{{ $post->content }}</span>
+            <span class="text-sm text-slate-500">{{ $post->content }}</span>
         </div>
     </div>
 
@@ -86,6 +86,70 @@
 -   Open file blade dashboard, insert livewire post/index
     ```php
     <livewire:post.index />
+    ```
+
+## Livewire Post Create
+
+-   Make livewire Post/Create
+    ```php
+    php artisan livewire:make Post/Create
+    ```
+-   Open class Post Create
+
+    ```php
+    public $title;
+
+    public $content;
+
+    public function store()
+    {
+        auth()->user()->posts()->create([
+            'title' => $this->title,
+            'content' => $this->content
+        ]);
+
+        $this->title = '';
+        $this->content = '';
+    }
+    ```
+
+-   Open file blade Post Create
+
+    ```php
+    <div class="mb-4">
+        <form wire:submit.prevent="store" class="space-y-6">
+            <div class="px-4 py-5 space-y-6 bg-white sm:p-6">
+                <div>
+                    <label for="title" class="block text-sm font-medium text-gray-700"> Title </label>
+                    <div class="mt-1">
+                        <input wire:model="title" type="text" name="title" id="title" class="flex-1 block w-full border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Title...">
+                    </div>
+                </div>
+                <div>
+                    <label for="content" class="block text-sm font-medium text-gray-700"> Content </label>
+                    <div class="mt-1">
+                        <textarea wire:model="content" id="content" name="content" rows="3" class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Content here..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Create New Post</button>
+            </div>
+        </form>
+    </div>
+    ```
+
+-   Open file blade Post Index, add livewire Post Create
+
+    ```php
+    <livewire:post.create />
+    ```
+
+-   Create method relation posts on User model
+    ```php
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
     ```
 
 ## License
