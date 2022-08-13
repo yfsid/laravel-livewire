@@ -193,14 +193,10 @@ add `@error('content')` in file blade post create
 add session message in function PostStore in class post index
 
 ```php
-...
-
 public function postStore()
 {
     session()->flash('message', 'Your post was added!.');
 }
-
-...
 ```
 
 add session flash message in file blade post index
